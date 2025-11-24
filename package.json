@@ -1,0 +1,13 @@
+{
+  "name": "paste",
+  "version": "1.0.0",
+  "description": "real-time synced paste for yxorp users",
+  "main": "server.js",
+  "dependencies": {
+    "ws": "^8.0.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}
+

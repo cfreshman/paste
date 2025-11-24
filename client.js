@@ -5,6 +5,7 @@ let ws = null;
 let authToken = localStorage.getItem('paste_auth') || null;
 let isConnected = false;
 let updateTimeout = null;
+let lastSentContent = '';
 
 function updateStatus(text, className) {
   status.innerHTML = text;
@@ -83,17 +84,15 @@ function connect() {
       const data = JSON.parse(event.data);
       
       if (data.type === 'content') {
-        // Only update if content is different
+        // Ignore if this is an echo of what we just sent
+        if (data.content === lastSentContent) {
+          return;
+        }
+        
+        // Only update if content is different from current
         if (textarea.value !== data.content) {
-          const cursorPos = textarea.selectionStart;
-          const hasFocus = document.activeElement === textarea;
-          
           textarea.value = data.content;
-          
-          // Restore cursor position if user was focused
-          if (hasFocus && cursorPos <= data.content.length) {
-            textarea.setSelectionRange(cursorPos, cursorPos);
-          }
+          lastSentContent = data.content;
         }
       }
       
@@ -130,6 +129,7 @@ textarea.addEventListener('input', () => {
   // Debounce updates to avoid flooding
   clearTimeout(updateTimeout);
   updateTimeout = setTimeout(() => {
+    lastSentContent = textarea.value;
     ws.send(JSON.stringify({
       type: 'update',
       content: textarea.value

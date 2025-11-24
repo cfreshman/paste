@@ -43,8 +43,11 @@ pm2 save
 ## configuration
 
 ```bash
-PORT=8766 node server.js                # custom port (default: 8766)
-DATA_DIR=~/paste node server.js         # custom data location (default: ./data)
+PORT=8766 node server.js                    # custom port (default: 8766)
+DATA_DIR=~/paste node server.js             # custom data location (default: ./data)
+THEME=beyondcool PORT=8766 node server.js   # use beyondcool theme (orange on black with glow)
+THEME=warm PORT=8766 node server.js         # use warm theme (cream background, brown text)
+THEME=hue120 PORT=8766 node server.js       # use hue-based theme (0-360, e.g. 120=green, 240=blue)
 ```
 
 ---

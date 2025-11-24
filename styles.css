@@ -1,3 +1,11 @@
+:root {
+  --bg: #fff;
+  --text: #000;
+  --text-shadow: none;
+  --text-tertiary: #ccc;
+  --error-color: #d00;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,9 +18,9 @@ html, body {
 }
 
 body {
-  font-family: "Google Sans Code", monospace;
-  background: #fff;
-  color: #000;
+  font-family: "Google Sans Code", "Noto Emoji", monospace;
+  background: var(--bg);
+  color: var(--text);
 }
 
 .status {
@@ -24,11 +32,11 @@ body {
 }
 
 .status.connected {
-  color: #000;
+  color: var(--text);
 }
 
 .status.disconnected {
-  color: #d00;
+  color: var(--error-color);
   opacity: 1;
 }
 
@@ -38,15 +46,14 @@ textarea {
   padding: 1rem;
   font-size: 16px;
   font-family: "Google Sans Code", monospace;
-  background: #fff;
+  background: var(--bg);
   border: none;
-  color: #000;
+  color: var(--text);
   resize: none;
   outline: none;
   line-height: 1.5;
 }
 
 textarea::placeholder {
-  color: #ccc;
+  color: var(--text-tertiary);
 }
-

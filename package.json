@@ -4,10 +4,10 @@
   "description": "real-time synced paste for yxorp users",
   "main": "server.js",
   "dependencies": {
+    "auto-json-db": "^1.0.0",
     "ws": "^8.0.0"
   },
   "scripts": {
     "start": "node server.js"
   }
 }
-
